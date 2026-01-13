@@ -165,7 +165,7 @@ init {
       vars.slot.Add(new MemoryWatcher<byte>(vars.ptr + offset + 0x1de) { Name = "items" });
       vars.slot.Add(new MemoryWatcher<int>(vars.ptr + offset + 0x21e) { Name = "flames" });
       vars.slot.Add(new MemoryWatcher<int>(vars.ptr + offset + 0x198) { Name = "bunnies" });
-      vars.slot.Add(new MemoryWatcher<long>(vars.ptr + offset + 0x168) { Name = "eggs" });
+      vars.slot.Add(new MemoryWatcher<long>(vars.ptr + offset + 0x188) { Name = "eggs" });
 
       vars.slotDone = true;
     }
