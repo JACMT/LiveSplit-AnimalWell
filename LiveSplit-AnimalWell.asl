@@ -164,8 +164,8 @@ init {
       vars.slot.Add(new MemoryWatcher<short>(vars.ptr + offset + 0x1dc) { Name = "equipment" });
       vars.slot.Add(new MemoryWatcher<byte>(vars.ptr + offset + 0x1de) { Name = "items" });
       vars.slot.Add(new MemoryWatcher<int>(vars.ptr + offset + 0x21e) { Name = "flames" });
-      vars.slot.Add(new MemoryWatcher<int>(vars.ptr + offset + 0x198) { Name = "bunnies" });
-      vars.slot.Add(new MemoryWatcher<long>(vars.ptr + offset + 0x188) { Name = "eggs" });
+      vars.slot.Add(new MemoryWatcher<uint>(vars.ptr + offset + 0x198) { Name = "bunnies" });
+      vars.slot.Add(new MemoryWatcher<ulong>(vars.ptr + offset + 0x188) { Name = "eggs" });
 
       vars.slotDone = true;
     }
@@ -274,10 +274,10 @@ split {
         return true;
       }
     }
-  } else if(settings["sp-bunnies"] && vars.slot["bunnies"].Changed) {
+  } else if(settings["sp-bunnies"] && vars.slot["bunnies"].Changed && vars.slot["bunnies"].Current > vars.slot["bunnies"].Old ) {
     print("Split: Bunny");
     return true;
-  } else if(settings["sp-eggs"] && vars.slot["eggs"].Changed) {
+  } else if(settings["sp-eggs"] && vars.slot["eggs"].Changed && vars.slot["eggs"].Current > vars.slot["eggs"].Old) {
     print("Split: Egg");
     return true;
   } else if(settings["sp-end-popup"] && vars.state["popup"].Changed && vars.state["popup"].Current.Contains(":")) {
