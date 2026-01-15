@@ -274,10 +274,10 @@ split {
         return true;
       }
     }
-  } else if(settings["sp-bunnies"] && vars.slot["bunnies"].Changed) {
+  } else if(settings["sp-bunnies"] && vars.slot["bunnies"].Changed && vars.slot["bunnies"].Current > vars.slot["bunnies"].Old ) {
     print("Split: Bunny");
     return true;
-  } else if(settings["sp-eggs"] && vars.slot["eggs"].Changed) {
+  } else if(settings["sp-eggs"] && vars.slot["eggs"].Changed && vars.slot["eggs"].Current < vars.slot["eggs"].Old) {
     print("Split: Egg");
     return true;
   } else if(settings["sp-end-popup"] && vars.state["popup"].Changed && vars.state["popup"].Current.Contains(":")) {
