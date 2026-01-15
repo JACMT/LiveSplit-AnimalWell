@@ -46,6 +46,7 @@ startup {
   settings.Add("sp-flames-3", true, "Green / Ostrich", "sp-flames");
 
   settings.Add("sp-bunnies", false, "Split on bunnies", "sp");
+  settings.Add("sp-eggs", false, "Split on eggs", "sp");
 
   settings.Add("rs", true, "Resetting");
   settings.Add("rs-load", true, "Reset on opening 'load game' menu", "rs");
@@ -164,6 +165,7 @@ init {
       vars.slot.Add(new MemoryWatcher<byte>(vars.ptr + offset + 0x1de) { Name = "items" });
       vars.slot.Add(new MemoryWatcher<int>(vars.ptr + offset + 0x21e) { Name = "flames" });
       vars.slot.Add(new MemoryWatcher<int>(vars.ptr + offset + 0x198) { Name = "bunnies" });
+      vars.slot.Add(new MemoryWatcher<long>(vars.ptr + offset + 0x188) { Name = "eggs" });
 
       vars.slotDone = true;
     }
@@ -274,6 +276,9 @@ split {
     }
   } else if(settings["sp-bunnies"] && vars.slot["bunnies"].Changed) {
     print("Split: Bunny");
+    return true;
+  } else if(settings["sp-eggs"] && vars.slot["eggs"].Changed) {
+    print("Split: Egg");
     return true;
   } else if(settings["sp-end-popup"] && vars.state["popup"].Changed && vars.state["popup"].Current.Contains(":")) {
     print("Split: Timer popup");
